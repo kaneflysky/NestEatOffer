@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NEST吃单报价</title>
+</head>
+<body class="bk">
+<div style="text-align: center">
+    <h2>NEST吃单报价</h2>
+    <label th:text=${eatOfferState}></label>  <button onclick="eatOfferState()">修改状态</button>
+    <p></p>
+    <label th:text=${huobiExchangeState}></label>  <button onclick="huobiExchangeState()">修改状态</button>
+    <p></p>
+    <label th:text=${authorizedUser}></label>  <button onclick="updateAuthorizedUser()">修改状态</button>
+    <p></p>
+    <label>价格波动上限千分之: </label><label th:text=${priceDeviation}></label>
+    <p></p>
+    <label>设置波动上限: </label>
+    <form id="updatePriceDeviation">
+        <input type="text" name="priceDeviation">
+        <input type="button" onclick="updatePriceDeviation()" value="提交"/>
+    </form>
+    <p></p>
+    <label>钱包地址: </label><label th:text=${address}></label>
+    <p></p>
+    <label>设置私钥: </label>
+    <form id="updatePrivateKey">
+        <input type="text" name="privateKey">
+        <input type="button" onclick="updatePrivateKey()" value="提交"/>
+    </form>
+    <p></p>
+    <label>当前使用节点: </label><label th:text=${node}></label>
+    <p></p>
+    <label>设置节点：</label>
+    <form id="updateNode">
+        <input type="text" name="node">
+        <input type="button" onclick="updateNode()" value="提交"/>
+    </form>
+    <p></p>
+    <label>交易所API-KEY: </label><label th:text=${apiKey}></label>
+    <p></p>
+    <label>交易所API-SECRET: </label><label th:text=${apiSecret}></label>
+    <p></p>
+    <form id="updateExchangeApiKey">
+        <label>输入API-KEY</label>
+        <p></p>
+        <input type="text" name="apiKey">
+        <p></p>
+        <label>输入API-SECRET</label>
+        <p></p>
+        <input type="text" name="apiSecret">
+        <p></p>
+        <input type="button" onclick="updateExchangeApiKey()" value="提交"/>
+    </form>
+
+</div>
+</body>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function updateAuthorizedUser() {
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updateAuthorizedUser",
+            data:$('').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("交易所认证修改错误!!")
+            }
+        })
+    }
+    function updateNode() {
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updateNode",
+            data:$('#updateNode').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的节点!!")
+            }
+        })
+    }
+    function updateExchangeApiKey(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updateExchangeApiKey",
+            data:$('#updateExchangeApiKey').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的API-KEY!!")
+            }
+        })
+    }
+    function updatePriceDeviation() {
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updatePriceDeviation",
+            data:$('#updatePriceDeviation').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的价格比例!!")
+            }
+        })
+    }
+    function updatePrivateKey(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updatePrivateKey",
+            data:$('#updatePrivateKey').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("请输入正确的私钥!!")
+            }
+        })
+    }
+    function huobiExchangeState() {
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updateHuobiExchangeState",
+            data:$('').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("交易所启动/关闭错误!!")
+            }
+        })
+    }
+    function eatOfferState(){
+        $.ajax({
+            type:"POST",
+            url:"http://127.0.0.1:8088/eatOffer/updateEatOfferState",
+            data:$('').serialize(),
+            success:function(result){
+                location.replace(location);
+            },
+            error:function(){
+                alert("吃单启动/关闭错误!!")
+            }
+        })
+    }
+</script>
+
+<style type="text/css">
+    .bk{
+        background-color: cadetblue;
+        background-size: 100% 100%;
+    }
+</style>
+</html>
+
