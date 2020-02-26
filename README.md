@@ -15,7 +15,7 @@
 
 3.  打开浏览器访问 http://127.0.0.1:8088/eatOffer/miningData , 出现如下界面
 
-   ![avatar](./picture/配置界面.png)
+   ![](./picture/配置界面.png)
 
 4. 设置吃单报价参数再启动
 
@@ -32,7 +32,7 @@
 
 1. 登陆交易所，选择API管理
 
-   ![avatar](./picture/API-KEY-1.png)
+   ![](./picture/API-KEY-1.png)
 
 2. 创建API-KEY并开放权限。
 
@@ -41,13 +41,13 @@
    * 开放“交易”。例如：充值到的3000USDT，会进行市价买卖，卖出3000USDT获取ETH。
    * 开放“提币”。例如：卖出3000USDT获取了11.5ETH，会将11.5ETH提取到当前吃单报价钱包地址。
 
-   ![avatar](./picture/API-KEY-2.png)
+   ![](./picture/API-KEY-2.png)
 
 3. 填写好之后，点击“创建”，此时会显示：api-key 和 api-secret。将其填写到配置页面，并点击“提交”。
 
 #### 三、吃单报价脚本流程图
 
-	![avatar](./picture/吃单报价流程.png)
+![](./picture/吃单报价流程.png)
 
 #### 四、注意事项
 
@@ -63,5 +63,5 @@
 
    * 如果开放了“提币”权限，根据火币规定，需要在 交易所提币地址列表中添加当前吃单报价钱包地址，否则无法提出。
 
-     ![avatar](./picture/提币地址添加说明.png)
+     ![](./picture/提币地址添加说明.png)
 
